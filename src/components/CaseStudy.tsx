@@ -20,8 +20,8 @@ export function CaseStudy() {
               </div>
               
               <p className="text-muted-foreground leading-relaxed">
-                I was hired by a local truck upfitting company to integrate a customer experience feedback loop into their existing system. 
-                The goal was to capture customer sentiment and use it to improve their services and online presence.
+                StrataXM partnered with a local truck upfitting company to integrate a customer experience feedback loop into their existing system. 
+                The objective was to capture customer sentiment and leverage it to enhance their services and online presence.
               </p>
               
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-2">
@@ -35,7 +35,7 @@ export function CaseStudy() {
                 <div className="bg-secondary p-4 rounded-lg">
                   <h4 className="text-primary font-medium mb-2">Solution</h4>
                   <p className="text-sm text-muted-foreground">
-                    Implemented an integrated CX feedback system that connected with their existing operational tools and automated review requests.
+                    StrataXM implemented an integrated CX feedback system that connected with their existing operational tools and automated review requests.
                   </p>
                 </div>
                 
