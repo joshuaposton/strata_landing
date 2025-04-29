@@ -1,15 +1,14 @@
-
 import Link from "next/link";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
   
   return (
-    <footer className="border-t border-border/40 py-12">
-      <div className="container">
-        <div className="grid md:grid-cols-3 gap-8">
+    <footer className='border-t border-border/40 py-12'>
+      <div className='container'>
+        <div className='grid md:grid-cols-3 gap-8'>
           <div>
-            <h3 className="text-xl font-medium mb-4">Strata<span className="text-primary">XM</span></h3>
+            <h3 className='text-xl font-medium mb-4 tech-font'>Strata<span className='text-primary'>XM</span></h3>
             <p className="text-muted-foreground mb-4">
               Where Customer Experience Meets Code.
             </p>

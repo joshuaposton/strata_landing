@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
@@ -11,7 +10,7 @@ export function Hero() {
       
       <div className="container relative z-10">
         <div className="max-w-3xl mx-auto">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-medium mb-6 tracking-tight">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-medium mb-6 tracking-tight tech-heading">
             Turn Customer Experience Into a <span className="gradient-text">System</span>, Not a Guess
           </h1>
           <p className="text-xl text-muted-foreground mb-10 leading-relaxed">
