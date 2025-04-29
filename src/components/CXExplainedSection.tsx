@@ -1,4 +1,3 @@
-
 import { Card, CardContent } from "@/components/ui/card";
 import { Lightbulb, TrendingUp, Users, BarChart3, Heart, ShieldCheck } from "lucide-react";
 
@@ -37,14 +36,14 @@ export function CXExplainedSection() {
                 long-term value.
               </p>
               
-              <div className="grid md:grid-cols-2 gap-6 mb-6">
-                <div className="bg-background/30 p-5 rounded-lg">
-                  <div className="flex items-center gap-3 mb-3">
-                    <BarChart3 className="text-primary h-5 w-5" />
-                    <h4 className="font-medium">Financial Performance</h4>
+              <div className='grid md:grid-cols-2 gap-6 mb-6'>
+                <div className='bg-background/30 p-5 rounded-lg'>
+                  <div className='flex items-center gap-3 mb-3'>
+                    <BarChart3 className='text-primary h-5 w-5' />
+                    <h4 className='font-medium'>Financial Performance</h4>
                   </div>
-                  <p className="text-sm text-muted-foreground">
-                    CX leaders outperform laggards in stock returns by 3x. Companies that excel in customer experience see 1.6x higher customer satisfaction rates, 1.9x higher average order value, and 2.4x higher customer lifetime value.
+                  <p className='text-sm text-muted-foreground'>
+                    Companies that excel in customer experience see 1.6x higher customer satisfaction rates, 1.9x higher average order value, and 2.4x higher customer lifetime value. These metrics directly translate to improved business performance and growth.
                   </p>
                 </div>
                 
