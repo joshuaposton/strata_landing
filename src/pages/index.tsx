@@ -1,4 +1,3 @@
-
 import Head from "next/head";
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
@@ -7,6 +6,7 @@ import { TechGrid } from "@/components/TechGrid";
 import { CaseStudy } from "@/components/CaseStudy";
 import { ContactSection } from "@/components/ContactSection";
 import { Footer } from "@/components/Footer";
+import { ServicesSection } from '@/components/ServicesSection';
 
 export default function Home() {
   return (
@@ -23,6 +23,7 @@ export default function Home() {
         <main className="flex-1">
           <Hero />
           <ProblemSection />
+          <ServicesSection />
           <TechGrid />
           <CaseStudy />
           <ContactSection />
