@@ -39,7 +39,7 @@ export function ContactSection() {
   
   return (
     <section id='contact' className='py-20 relative gradient-section-1'>
-      <div className='absolute inset-0 subtle-grid-bg'></div>
+      {/* Remove the subtle grid background div */}
       <div className='absolute top-0 right-0 w-96 h-96 bg-primary/10 rounded-full filter blur-3xl opacity-30'></div>
       
       <div className='container relative z-10'>

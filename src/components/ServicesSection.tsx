@@ -4,7 +4,7 @@ import { MessageSquare, GitMerge, BarChart3, Zap } from "lucide-react";
 export function ServicesSection() {
   return (
     <section id='services' className='py-20 relative gradient-section-2'>
-      <div className='absolute inset-0 subtle-grid-bg'></div>
+      {/* Remove the subtle grid background div */}
       
       <div className='container relative z-10'>
         <div className='max-w-3xl mx-auto mb-16'>
