@@ -1,21 +1,33 @@
-import React from 'react'
-import Head from 'next/head'
+
+import Head from "next/head";
+import { Header } from "@/components/Header";
+import { Hero } from "@/components/Hero";
+import { ProblemSection } from "@/components/ProblemSection";
+import { ServicesSection } from "@/components/ServicesSection";
+import { AboutSection } from "@/components/AboutSection";
+import { ContactSection } from "@/components/ContactSection";
+import { Footer } from "@/components/Footer";
 
 export default function Home() {
   return (
     <>
       <Head>
-        <title>Hello World</title>
-        <meta name="description" content="Welcome to my app" />
+        <title>StrataXM | Experience Management Consulting</title>
+        <meta name="description" content="StrataXM helps small and medium businesses transform customer experiences into business growth through expert system integration and analytics." />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       
-      <main className="min-h-screen bg-gray-100 flex items-center justify-center">
-        <div className="text-center space-y-4">
-          <h1 className="text-4xl font-bold text-gray-900">Hello World</h1>
-          <p className="text-lg text-gray-600">This is going to be your softgen app, start by describing your project.</p>
-        </div>
-      </main>
+      <div className="flex flex-col min-h-screen">
+        <Header />
+        <main>
+          <Hero />
+          <ProblemSection />
+          <ServicesSection />
+          <AboutSection />
+          <ContactSection />
+        </main>
+        <Footer />
+      </div>
     </>
-  )
+  );
 }
