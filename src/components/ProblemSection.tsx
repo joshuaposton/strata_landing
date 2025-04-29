@@ -3,50 +3,40 @@ import { Card, CardContent } from "@/components/ui/card";
 
 export function ProblemSection() {
   return (
-    <section className="py-16 bg-gray-50">
-      <div className="container mx-auto px-4 md:px-6 lg:px-8">
-        <div className="max-w-3xl mx-auto text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-blue-900 mb-4">
-            The Experience Gap Is Costing You
+    <section id="advantage" className="py-20 relative">
+      <div className="absolute inset-0 subtle-grid-bg"></div>
+      
+      <div className="container relative z-10">
+        <div className="max-w-3xl mx-auto mb-16">
+          <h2 className="section-title text-center">
+            <span className="gradient-text">Our Advantage</span>
           </h2>
-          <p className="text-lg text-gray-700">
-            Today's businesses face critical challenges that directly impact their bottom line.
+          <p className="text-lg text-muted-foreground text-center mt-4">
+            StrataXM isn't just a consultancy — we build the connective tissue between your CRMs, surveys, POS systems, and dashboards.
           </p>
         </div>
         
-        <div className="grid md:grid-cols-3 gap-8">
-          <Card className="border-t-4 border-t-blue-900">
-            <CardContent className="pt-6">
-              <h3 className="text-xl font-semibold mb-3 text-blue-900">Revenue Leakage</h3>
-              <p className="text-gray-700">
-                Business owners feel like they're constantly leaking revenue through missed opportunities and customer churn.
-              </p>
-            </CardContent>
-          </Card>
+        <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid-item">
+            <h3 className="text-xl font-medium mb-3 text-foreground">API Integrations</h3>
+            <p className="text-muted-foreground">
+              We create seamless connections between your business systems, ensuring data flows exactly where it needs to go.
+            </p>
+          </div>
           
-          <Card className="border-t-4 border-t-blue-900">
-            <CardContent className="pt-6">
-              <h3 className="text-xl font-semibold mb-3 text-blue-900">Fragmented Experiences</h3>
-              <p className="text-gray-700">
-                Your customers experience disconnected journeys across different touchpoints, creating friction and frustration.
-              </p>
-            </CardContent>
-          </Card>
+          <div className="grid-item">
+            <h3 className="text-xl font-medium mb-3 text-foreground">Analytics Infrastructure</h3>
+            <p className="text-muted-foreground">
+              Build robust data pipelines that transform raw feedback into actionable business intelligence.
+            </p>
+          </div>
           
-          <Card className="border-t-4 border-t-blue-900">
-            <CardContent className="pt-6">
-              <h3 className="text-xl font-semibold mb-3 text-blue-900">Disconnected Systems</h3>
-              <p className="text-gray-700">
-                Operations and data silos prevent you from seeing the complete picture and making informed decisions.
-              </p>
-            </CardContent>
-          </Card>
-        </div>
-        
-        <div className="text-center mt-12">
-          <p className="text-lg text-gray-700 max-w-2xl mx-auto">
-            Discover how StrataXM helps you bridge these gaps with integrated systems that align your operations and elevate your customer experience.
-          </p>
+          <div className="grid-item">
+            <h3 className="text-xl font-medium mb-3 text-foreground">Qualtrics/CRM Automation</h3>
+            <p className="text-muted-foreground">
+              Automate the flow between customer feedback and your CRM, creating closed-loop systems that drive action.
+            </p>
+          </div>
         </div>
       </div>
     </section>

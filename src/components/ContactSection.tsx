@@ -9,7 +9,7 @@ export function ContactSection() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    company: "",
+    role: "",
     message: ""
   });
   
@@ -29,7 +29,7 @@ export function ContactSection() {
     setTimeout(() => {
       setIsSubmitting(false);
       setIsSubmitted(true);
-      setFormData({ name: "", email: "", company: "", message: "" });
+      setFormData({ name: "", email: "", role: "", message: "" });
       
       // Reset success message after 5 seconds
       setTimeout(() => {
@@ -39,28 +39,31 @@ export function ContactSection() {
   };
   
   return (
-    <section id="contact" className="py-16 bg-white">
-      <div className="container mx-auto px-4 md:px-6 lg:px-8">
+    <section id="contact" className="py-20 relative">
+      <div className="absolute inset-0 subtle-grid-bg"></div>
+      <div className="absolute top-0 right-0 w-96 h-96 bg-primary/10 rounded-full filter blur-3xl opacity-20"></div>
+      
+      <div className="container relative z-10">
         <div className="max-w-3xl mx-auto text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-blue-900 mb-4">
-            Get In Touch
+          <h2 className="section-title">
+            <span className="gradient-text">Start the Conversation</span>
           </h2>
-          <p className="text-lg text-gray-700">
-            Ready to transform your customer experience? Reach out for a free consultation and discover how we can help your business grow.
+          <p className="text-lg text-muted-foreground mt-4">
+            Ready to transform your customer experience infrastructure? Let's discuss how we can help your systems work together.
           </p>
         </div>
         
-        <Card className="max-w-2xl mx-auto">
-          <CardContent className="pt-6">
+        <Card className="max-w-2xl mx-auto border border-border/50 bg-secondary/50">
+          <CardContent className="p-8">
             {isSubmitted ? (
               <div className="text-center py-8">
-                <h3 className="text-xl font-semibold text-blue-900 mb-2">Thank You!</h3>
-                <p className="text-gray-700">Your message has been sent. We'll be in touch soon.</p>
+                <h3 className="text-xl font-medium mb-2">Message Received</h3>
+                <p className="text-muted-foreground">We'll be in touch shortly to discuss your project.</p>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
+                  <label htmlFor="name" className="block text-sm font-medium mb-2">
                     Name
                   </label>
                   <Input
@@ -69,12 +72,12 @@ export function ContactSection() {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full"
+                    className="w-full bg-background/50"
                   />
                 </div>
                 
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+                  <label htmlFor="email" className="block text-sm font-medium mb-2">
                     Email
                   </label>
                   <Input
@@ -84,26 +87,27 @@ export function ContactSection() {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full"
+                    className="w-full bg-background/50"
                   />
                 </div>
                 
                 <div>
-                  <label htmlFor="company" className="block text-sm font-medium text-gray-700 mb-1">
-                    Company Name
+                  <label htmlFor="role" className="block text-sm font-medium mb-2">
+                    Role
                   </label>
                   <Input
-                    id="company"
-                    name="company"
-                    value={formData.company}
+                    id="role"
+                    name="role"
+                    value={formData.role}
                     onChange={handleChange}
                     required
-                    className="w-full"
+                    className="w-full bg-background/50"
+                    placeholder="e.g. CTO, Head of Operations, Founder"
                   />
                 </div>
                 
                 <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
+                  <label htmlFor="message" className="block text-sm font-medium mb-2">
                     Message
                   </label>
                   <Textarea
@@ -112,16 +116,16 @@ export function ContactSection() {
                     value={formData.message}
                     onChange={handleChange}
                     required
-                    className="w-full min-h-[120px]"
+                    className="w-full min-h-[120px] bg-background/50"
                   />
                 </div>
                 
                 <Button 
                   type="submit" 
-                  className="w-full bg-blue-900 hover:bg-blue-800"
+                  className="w-full"
                   disabled={isSubmitting}
                 >
-                  {isSubmitting ? "Submitting..." : "Submit"}
+                  {isSubmitting ? "Sending..." : "Start the Conversation"}
                 </Button>
               </form>
             )}
