@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -10,24 +11,24 @@
 
 @layer base {
   :root {
-    --background: 240 10% 3.9%;
-    --foreground: 0 0% 98%;
-    --card: 240 10% 3.9%;
-    --card-foreground: 0 0% 98%;
-    --popover: 240 10% 3.9%;
-    --popover-foreground: 0 0% 98%;
+    --background: 210 40% 98%;
+    --foreground: 222 47% 11%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
     --primary: 217 91% 60%;
-    --primary-foreground: 0 0% 98%;
-    --secondary: 240 5% 10%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 240 5% 10%;
-    --muted-foreground: 240 5% 65%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222 47% 11%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215 16% 47%;
     --accent: 217 91% 60%;
-    --accent-foreground: 0 0% 98%;
+    --accent-foreground: 222 47% 11%;
     --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 240 5% 15%;
-    --input: 240 5% 15%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
     --ring: 217 91% 60%;
     --radius: 0.3rem;
   }
@@ -58,11 +59,11 @@
   }
   
   .grid-item {
-    @apply bg-secondary rounded-lg p-6 transition-all duration-200 hover:bg-secondary/80 hover:shadow-lg hover:shadow-primary/10;
+    @apply bg-white rounded-lg p-6 transition-all duration-200 hover:bg-white/80 hover:shadow-lg hover:shadow-primary/10 border border-border;
   }
   
   .tech-grid-item {
-    @apply bg-secondary rounded-lg p-6 relative overflow-hidden transition-all duration-200 hover:shadow-lg hover:shadow-primary/20 border border-border/50 hover:border-primary/50;
+    @apply bg-white rounded-lg p-6 relative overflow-hidden transition-all duration-200 hover:shadow-lg hover:shadow-primary/20 border border-border hover:border-primary/50;
   }
   
   .section-title {
@@ -75,8 +76,8 @@
   }
   
   .subtle-grid-bg {
-    background-image: linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
-                      linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.05) 1px, transparent 1px),
+                      linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
     background-size: 24px 24px;
   }
   
@@ -90,5 +91,22 @@
     font-family: 'JetBrains Mono', monospace;
     letter-spacing: -0.05em;
     @apply font-medium;
+  }
+  
+  /* Section gradients */
+  .gradient-section-1 {
+    background: linear-gradient(180deg, #f0f9ff 0%, #e0f2fe 100%);
+  }
+  
+  .gradient-section-2 {
+    background: linear-gradient(180deg, #e0f2fe 0%, #dbeafe 100%);
+  }
+  
+  .gradient-section-3 {
+    background: linear-gradient(180deg, #dbeafe 0%, #eff6ff 100%);
+  }
+  
+  .gradient-section-4 {
+    background: linear-gradient(180deg, #eff6ff 0%, #f0f9ff 100%);
   }
 }

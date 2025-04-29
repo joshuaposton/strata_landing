@@ -3,16 +3,16 @@ import { Lightbulb, TrendingUp, Users, BarChart3, Heart, ShieldCheck } from "luc
 
 export function CXExplainedSection() {
   return (
-    <section id="cx-explained" className="py-20 relative">
-      <div className="absolute inset-0 subtle-grid-bg"></div>
+    <section id='cx-explained' className='py-20 relative gradient-section-3'>
+      <div className='absolute inset-0 subtle-grid-bg'></div>
       
-      <div className="container relative z-10">
-        <div className="max-w-3xl mx-auto mb-16">
-          <h2 className="section-title text-center">
-            <span className="gradient-text">Understanding Customer Experience</span>
+      <div className='container relative z-10'>
+        <div className='max-w-3xl mx-auto mb-16'>
+          <h2 className='section-title text-center'>
+            <span className='gradient-text'>Understanding Customer Experience</span>
           </h2>
-          <p className="text-lg text-muted-foreground text-center mt-4">
-            Customer Experience (CX) is more than just customer service—it's the entire journey a customer takes with your business.
+          <p className='text-lg text-muted-foreground text-center mt-4'>
+            Customer Experience (CX) is more than just satisfaction—it's a strategic approach that drives business growth and customer loyalty.
           </p>
         </div>
         
