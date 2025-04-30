@@ -2,7 +2,7 @@
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, BarChart2, Zap, RefreshCw } from "lucide-react";
+import { ArrowRight, BarChart2, Zap, RefreshCw, AlertCircle } from "lucide-react";
 
 export function Hero() {
   return (
@@ -12,40 +12,50 @@ export function Hero() {
       
       <div className="container relative z-10">
         <div className="max-w-3xl mx-auto">
+          <div className="inline-flex items-center gap-2 bg-primary/10 px-4 py-2 rounded-full mb-6">
+            <AlertCircle className="w-4 h-4 text-primary" />
+            <span className="text-sm font-medium">For service businesses with multiple locations</span>
+          </div>
+          
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 tracking-tight tech-heading">
-            <span className="gradient-text">Boost Revenue 30%</span> With Connected Customer Experience Systems
+            <span className="gradient-text">Stop Losing Customers</span> to Disconnected Systems
           </h1>
           <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
-            We integrate your disconnected CX tools into a unified system that drives measurable business growth through automated workflows and actionable insights.
+            For dealerships and service businesses struggling with fragmented customer data: We connect your existing tools into one seamless system that helps you <strong>retain more customers and grow revenue by 30%</strong>.
           </p>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
+            <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-border/30">
+              <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mb-3">
                 <BarChart2 className="w-5 h-5 text-primary" />
               </div>
-              <p className="text-sm font-medium">Increase Customer Retention</p>
+              <h3 className="text-base font-medium mb-2">Keep 27% More Customers</h3>
+              <p className="text-sm text-muted-foreground">Automatically identify at-risk customers before they leave</p>
             </div>
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
+            
+            <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-border/30">
+              <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mb-3">
                 <Zap className="w-5 h-5 text-primary" />
               </div>
-              <p className="text-sm font-medium">Accelerate Decision Making</p>
+              <h3 className="text-base font-medium mb-2">Make Smarter Decisions Daily</h3>
+              <p className="text-sm text-muted-foreground">Get actionable insights from your customer data in real-time</p>
             </div>
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
+            
+            <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-border/30">
+              <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mb-3">
                 <RefreshCw className="w-5 h-5 text-primary" />
               </div>
-              <p className="text-sm font-medium">Automate CX Workflows</p>
+              <h3 className="text-base font-medium mb-2">Save 15+ Hours Weekly</h3>
+              <p className="text-sm text-muted-foreground">Eliminate manual data entry and repetitive follow-up tasks</p>
             </div>
           </div>
           
           <div className="flex flex-col sm:flex-row gap-4 mb-12">
             <Button asChild size="lg" className="px-8">
-              <Link href="#contact">Get Your CX Assessment <ArrowRight className="ml-2 h-4 w-4" /></Link>
+              <Link href="#contact">Get Your Free CX System Audit <ArrowRight className="ml-2 h-4 w-4" /></Link>
             </Button>
             <Button asChild size="lg" variant="outline" className="px-8">
-              <Link href="#services">View Solutions <ArrowRight className="ml-2 h-4 w-4" /></Link>
+              <Link href="#services">See How It Works <ArrowRight className="ml-2 h-4 w-4" /></Link>
             </Button>
           </div>
           
@@ -59,8 +69,46 @@ export function Hero() {
             />
             <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent flex items-end justify-center pb-4">
               <span className="text-sm font-medium px-4 py-2 bg-background/80 rounded-full">
-                Unified CX Dashboard
+                Your Unified Customer Dashboard
               </span>
+            </div>
+          </div>
+          
+          <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="bg-white/5 backdrop-blur-sm rounded-lg p-6 border border-border/20">
+              <h3 className="text-base font-medium mb-3 text-red-400">Without StrataXM:</h3>
+              <ul className="space-y-2">
+                <li className="flex items-start gap-2 text-sm text-muted-foreground">
+                  <span className="text-red-400 mt-1">✕</span>
+                  <span>Customer data trapped in separate systems</span>
+                </li>
+                <li className="flex items-start gap-2 text-sm text-muted-foreground">
+                  <span className="text-red-400 mt-1">✕</span>
+                  <span>Missed follow-ups and lost opportunities</span>
+                </li>
+                <li className="flex items-start gap-2 text-sm text-muted-foreground">
+                  <span className="text-red-400 mt-1">✕</span>
+                  <span>Inconsistent experience across locations</span>
+                </li>
+              </ul>
+            </div>
+            
+            <div className="bg-white/5 backdrop-blur-sm rounded-lg p-6 border border-border/20">
+              <h3 className="text-base font-medium mb-3 text-green-400">With StrataXM:</h3>
+              <ul className="space-y-2">
+                <li className="flex items-start gap-2 text-sm text-muted-foreground">
+                  <span className="text-green-400 mt-1">✓</span>
+                  <span>Complete customer view across all systems</span>
+                </li>
+                <li className="flex items-start gap-2 text-sm text-muted-foreground">
+                  <span className="text-green-400 mt-1">✓</span>
+                  <span>Automated follow-ups and customer recovery</span>
+                </li>
+                <li className="flex items-start gap-2 text-sm text-muted-foreground">
+                  <span className="text-green-400 mt-1">✓</span>
+                  <span>Consistent experience at every location</span>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
