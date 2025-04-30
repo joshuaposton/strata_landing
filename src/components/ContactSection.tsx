@@ -4,7 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent } from "@/components/ui/card";
 import { useState } from "react";
-import { ArrowRight, CheckCircle, MessageSquare, FileText, Zap } from "lucide-react";
+import { ArrowRight, CheckCircle, MessageSquare, FileText, Zap, Users, Briefcase } from "lucide-react";
 
 export function ContactSection() {
   const [formData, setFormData] = useState({
@@ -12,7 +12,7 @@ export function ContactSection() {
     email: "",
     role: "",
     business: "",
-    locations: "",
+    interests: [] as string[],
     message: ""
   });
   
@@ -24,6 +24,15 @@ export function ContactSection() {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
   
+  const handleInterestToggle = (interest: string) => {
+    setFormData(prev => {
+      const newInterests = prev.interests.includes(interest)
+        ? prev.interests.filter(i => i !== interest)
+        : [...prev.interests, interest];
+      return { ...prev, interests: newInterests };
+    });
+  };
+  
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
@@ -32,7 +41,7 @@ export function ContactSection() {
     setTimeout(() => {
       setIsSubmitting(false);
       setIsSubmitted(true);
-      setFormData({ name: "", email: "", role: "", business: "", locations: "", message: "" });
+      setFormData({ name: "", email: "", role: "", business: "", interests: [], message: "" });
       
       // Reset success message after 5 seconds
       setTimeout(() => {
@@ -48,40 +57,40 @@ export function ContactSection() {
       <div className="container relative z-10">
         <div className="max-w-3xl mx-auto text-center mb-12">
           <h2 className="section-title">
-            <span className="gradient-text">Get Your Free CX System Audit</span>
+            <span className="gradient-text">Schedule a Consultation</span>
           </h2>
           <p className="text-lg text-muted-foreground mt-4 mb-8">
-            Discover how to connect your customer systems and boost revenue by 30% with our complimentary assessment.
+            Discover how our strategic approach to experience management can help your organization achieve measurable business outcomes.
           </p>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-3xl mx-auto mb-12">
             <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-border/30">
               <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
-                <FileText className="w-6 h-6 text-primary" />
-              </div>
-              <h3 className="text-lg font-medium mb-2">System Analysis</h3>
-              <p className="text-sm text-muted-foreground">
-                Comprehensive review of your current CX tools and gaps
-              </p>
-            </div>
-            
-            <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-border/30">
-              <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
-                <Zap className="w-6 h-6 text-primary" />
-              </div>
-              <h3 className="text-lg font-medium mb-2">ROI Calculation</h3>
-              <p className="text-sm text-muted-foreground">
-                Potential revenue impact based on your business metrics
-              </p>
-            </div>
-            
-            <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-border/30">
-              <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
                 <MessageSquare className="w-6 h-6 text-primary" />
               </div>
-              <h3 className="text-lg font-medium mb-2">Action Plan</h3>
+              <h3 className="text-lg font-medium mb-2">Customer Experience</h3>
               <p className="text-sm text-muted-foreground">
-                Custom roadmap for connecting your systems effectively
+                Strategic programs that improve retention and satisfaction
+              </p>
+            </div>
+            
+            <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-border/30">
+              <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
+                <Users className="w-6 h-6 text-primary" />
+              </div>
+              <h3 className="text-lg font-medium mb-2">Employee Experience</h3>
+              <p className="text-sm text-muted-foreground">
+                Personalized journeys that boost engagement and retention
+              </p>
+            </div>
+            
+            <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-border/30">
+              <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
+                <Briefcase className="w-6 h-6 text-primary" />
+              </div>
+              <h3 className="text-lg font-medium mb-2">Qualtrics Implementation</h3>
+              <p className="text-sm text-muted-foreground">
+                Maximize the ROI of your XM technology investment
               </p>
             </div>
           </div>
@@ -92,8 +101,8 @@ export function ContactSection() {
             {isSubmitted ? (
               <div className="text-center py-8">
                 <CheckCircle className="w-12 h-12 text-primary mx-auto mb-4" />
-                <h3 className="text-xl font-medium mb-2">Your Audit Request Is Confirmed</h3>
-                <p className="text-muted-foreground mb-4">Our team will contact you within 24 hours to schedule your free CX System Audit.</p>
+                <h3 className="text-xl font-medium mb-2">Your Consultation Request Is Confirmed</h3>
+                <p className="text-muted-foreground mb-4">Our team will contact you within 24 hours to schedule your consultation.</p>
                 <div className="flex justify-center">
                   <Button 
                     onClick={() => setIsSubmitted(false)}
@@ -106,8 +115,8 @@ export function ContactSection() {
             ) : (
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="text-left mb-6">
-                  <h3 className="text-xl font-medium mb-2">Request Your Free CX System Audit</h3>
-                  <p className="text-sm text-muted-foreground">Complete the form below and we'll contact you within 24 hours to schedule your audit.</p>
+                  <h3 className="text-xl font-medium mb-2">Request Your Consultation</h3>
+                  <p className="text-sm text-muted-foreground">Complete the form below and we'll contact you within 24 hours to schedule your consultation.</p>
                 </div>
                 
                 <div>
@@ -151,13 +160,13 @@ export function ContactSection() {
                       onChange={handleChange}
                       required
                       className="w-full bg-white"
-                      placeholder="e.g. Service Manager, COO, Owner"
+                      placeholder="e.g. CXO, HR Director, Operations Lead"
                     />
                   </div>
                   
                   <div>
                     <label htmlFor="business" className="block text-sm font-medium mb-2">
-                      Business Type
+                      Organization
                     </label>
                     <Input
                       id="business"
@@ -166,29 +175,49 @@ export function ContactSection() {
                       onChange={handleChange}
                       required
                       className="w-full bg-white"
-                      placeholder="e.g. Auto Dealership, Home Services"
+                      placeholder="Your company name"
                     />
                   </div>
                 </div>
                 
                 <div>
-                  <label htmlFor="locations" className="block text-sm font-medium mb-2">
-                    Number of Locations
+                  <label className="block text-sm font-medium mb-2">
+                    Areas of Interest (Select all that apply)
                   </label>
-                  <Input
-                    id="locations"
-                    name="locations"
-                    value={formData.locations}
-                    onChange={handleChange}
-                    required
-                    className="w-full bg-white"
-                    placeholder="e.g. 3, 5, 10+"
-                  />
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
+                    <div 
+                      className={`cursor-pointer p-3 rounded-md border ${formData.interests.includes('cx') ? 'bg-primary/10 border-primary' : 'bg-white border-border'}`}
+                      onClick={() => handleInterestToggle('cx')}
+                    >
+                      <div className="flex items-center gap-2">
+                        <MessageSquare className="w-4 h-4" />
+                        <span className="text-sm">Customer Experience</span>
+                      </div>
+                    </div>
+                    <div 
+                      className={`cursor-pointer p-3 rounded-md border ${formData.interests.includes('ex') ? 'bg-primary/10 border-primary' : 'bg-white border-border'}`}
+                      onClick={() => handleInterestToggle('ex')}
+                    >
+                      <div className="flex items-center gap-2">
+                        <Users className="w-4 h-4" />
+                        <span className="text-sm">Employee Experience</span>
+                      </div>
+                    </div>
+                    <div 
+                      className={`cursor-pointer p-3 rounded-md border ${formData.interests.includes('qualtrics') ? 'bg-primary/10 border-primary' : 'bg-white border-border'}`}
+                      onClick={() => handleInterestToggle('qualtrics')}
+                    >
+                      <div className="flex items-center gap-2">
+                        <Briefcase className="w-4 h-4" />
+                        <span className="text-sm">Qualtrics Implementation</span>
+                      </div>
+                    </div>
+                  </div>
                 </div>
                 
                 <div>
                   <label htmlFor="message" className="block text-sm font-medium mb-2">
-                    What customer experience challenges are you facing?
+                    What experience management challenges are you facing?
                   </label>
                   <Textarea
                     id="message"
@@ -197,7 +226,7 @@ export function ContactSection() {
                     onChange={handleChange}
                     required
                     className="w-full min-h-[120px] bg-white"
-                    placeholder="Tell us about your current systems and challenges..."
+                    placeholder="Tell us about your current challenges and goals..."
                   />
                 </div>
                 
@@ -206,11 +235,11 @@ export function ContactSection() {
                   className="w-full"
                   disabled={isSubmitting}
                 >
-                  {isSubmitting ? 'Submitting...' : 'Get Your Free CX System Audit'} {!isSubmitting && <ArrowRight className="ml-2 h-4 w-4" />}
+                  {isSubmitting ? 'Submitting...' : 'Schedule Your Consultation'} {!isSubmitting && <ArrowRight className="ml-2 h-4 w-4" />}
                 </Button>
                 
                 <p className="text-xs text-center text-muted-foreground mt-4">
-                  By submitting this form, you'll receive your free audit with no obligation. We respect your privacy and will never share your information.
+                  By submitting this form, you'll receive your consultation with no obligation. We respect your privacy and will never share your information.
                 </p>
               </form>
             )}
