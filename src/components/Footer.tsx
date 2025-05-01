@@ -37,7 +37,7 @@ export function Footer() {
           
           <div>
             <h4 className='text-sm font-medium mb-4 uppercase tracking-wider text-muted-foreground'>Contact</h4>
-            <p className='text-muted-foreground mb-2'>hello@strataxm.com</p>
+            <p className='text-muted-foreground mb-2'>info@strataxm.com</p>
           </div>
         </div>
         
