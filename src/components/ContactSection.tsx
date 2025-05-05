@@ -18,6 +18,7 @@ export function ContactSection() {
   
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [error, setError] = useState("");
   
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -33,12 +34,28 @@ export function ContactSection() {
     });
   };
   
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setError("");
     
-    // Simulate form submission
-    setTimeout(() => {
+    try {
+      // Send form data to the API endpoint
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+      
+      const data = await response.json();
+      
+      if (!response.ok) {
+        throw new Error(data.error || "Failed to send message");
+      }
+      
+      // Success
       setIsSubmitting(false);
       setIsSubmitted(true);
       setFormData({ name: "", email: "", role: "", business: "", interests: [], message: "" });
@@ -47,7 +64,11 @@ export function ContactSection() {
       setTimeout(() => {
         setIsSubmitted(false);
       }, 5000);
-    }, 1500);
+    } catch (err) {
+      setIsSubmitting(false);
+      setError(err instanceof Error ? err.message : "An unknown error occurred");
+      console.error("Contact form submission error:", err);
+    }
   };
   
   return (
@@ -118,6 +139,12 @@ export function ContactSection() {
                   <h3 className="text-xl font-medium mb-2">Request Your Consultation</h3>
                   <p className="text-sm text-muted-foreground">Complete the form below and we'll contact you within 24 hours to schedule your consultation.</p>
                 </div>
+                
+                {error && (
+                  <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-md">
+                    {error}
+                  </div>
+                )}
                 
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium mb-2">
