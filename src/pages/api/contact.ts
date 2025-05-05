@@ -13,7 +13,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   try {
     await resend.emails.send({
       from: "StrataXM Website <info@strataxm.com>",
-      to: "info@strataxm.com",
+      to: "josh@strataxm.com",
       subject: `New Consultation Request from ${name}`,
       html: `
         <p><strong>Name:</strong> ${name}</p>
