@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -269,10 +268,3 @@ export function ContactSection() {
                   By submitting this form, you'll receive your consultation with no obligation. We respect your privacy and will never share your information.
                 </p>
               </form>
-            )}
-          </CardContent>
-        </Card>
-      </div>
-    </section>
-  );
-}
