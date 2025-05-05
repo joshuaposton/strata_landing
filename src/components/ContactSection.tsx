@@ -1,9 +1,10 @@
+
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent } from "@/components/ui/card";
 import { useState } from "react";
-import { ArrowRight, CheckCircle, MessageSquare, FileText, Zap, Users, Briefcase } from "lucide-react";
+import { ArrowRight, CheckCircle, MessageSquare, Users, Briefcase } from "lucide-react";
 
 export function ContactSection() {
   const [formData, setFormData] = useState({
@@ -71,7 +72,7 @@ export function ContactSection() {
   };
   
   return (
-    <section id="contact" className="py-20 relative gradient-section-1">
+    <div id="contact" className="py-20 relative gradient-section-1">
       <div className="absolute top-0 right-0 w-96 h-96 bg-primary/10 rounded-full filter blur-3xl opacity-30"></div>
       
       <div className="container relative z-10">
@@ -212,8 +213,8 @@ export function ContactSection() {
                   </label>
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
                     <div 
-                      className={`cursor-pointer p-3 rounded-md border ${formData.interests.includes('cx') ? 'bg-primary/10 border-primary' : 'bg-white border-border'}`}
-                      onClick={() => handleInterestToggle('cx')}
+                      className={`cursor-pointer p-3 rounded-md border ${formData.interests.includes("cx") ? "bg-primary/10 border-primary" : "bg-white border-border"}`}
+                      onClick={() => handleInterestToggle("cx")}
                     >
                       <div className="flex items-center gap-2">
                         <MessageSquare className="w-4 h-4" />
@@ -221,8 +222,8 @@ export function ContactSection() {
                       </div>
                     </div>
                     <div 
-                      className={`cursor-pointer p-3 rounded-md border ${formData.interests.includes('ex') ? 'bg-primary/10 border-primary' : 'bg-white border-border'}`}
-                      onClick={() => handleInterestToggle('ex')}
+                      className={`cursor-pointer p-3 rounded-md border ${formData.interests.includes("ex") ? "bg-primary/10 border-primary" : "bg-white border-border"}`}
+                      onClick={() => handleInterestToggle("ex")}
                     >
                       <div className="flex items-center gap-2">
                         <Users className="w-4 h-4" />
@@ -230,8 +231,8 @@ export function ContactSection() {
                       </div>
                     </div>
                     <div 
-                      className={`cursor-pointer p-3 rounded-md border ${formData.interests.includes('qualtrics') ? 'bg-primary/10 border-primary' : 'bg-white border-border'}`}
-                      onClick={() => handleInterestToggle('qualtrics')}
+                      className={`cursor-pointer p-3 rounded-md border ${formData.interests.includes("qualtrics") ? "bg-primary/10 border-primary" : "bg-white border-border"}`}
+                      onClick={() => handleInterestToggle("qualtrics")}
                     >
                       <div className="flex items-center gap-2">
                         <Briefcase className="w-4 h-4" />
@@ -261,10 +262,17 @@ export function ContactSection() {
                   className="w-full"
                   disabled={isSubmitting}
                 >
-                  {isSubmitting ? 'Submitting...' : 'Schedule Your Consultation'} {!isSubmitting && <ArrowRight className="ml-2 h-4 w-4" />}
+                  {isSubmitting ? "Submitting..." : "Schedule Your Consultation"} {!isSubmitting && <ArrowRight className="ml-2 h-4 w-4" />}
                 </Button>
                 
                 <p className="text-xs text-center text-muted-foreground mt-4">
                   By submitting this form, you'll receive your consultation with no obligation. We respect your privacy and will never share your information.
                 </p>
               </form>
+            )}
+          </CardContent>
+        </Card>
+      </div>
+    </div>
+  );
+}
