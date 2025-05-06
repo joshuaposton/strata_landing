@@ -35,11 +35,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       : interests || "None specified";
 
     // Send email
-  const emailResult = await resend.emails.send({
-    from: 'onboarding@resend.dev',
-    to: 'yourpersonalemail@example.com',
-    subject: 'Test Email from Resend API',
-    text: 'This is a test email to confirm Resend is working.',
+    const emailResult = await resend.emails.send({
+      from: 'onboarding@resend.dev',
+      to: 'yourpersonalemail@example.com',
+      subject: 'Test Email from Resend API',
+      text: 'This is a test email to confirm Resend is working.',
 });
 
     // Log success - using optional chaining to safely access id property
