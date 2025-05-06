@@ -1,4 +1,3 @@
-
 import { NextApiRequest, NextApiResponse } from "next";
 import { Resend } from "resend";
 
@@ -36,20 +35,25 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     // Send email
     const emailResult = await resend.emails.send({
-      from: 'onboarding@resend.dev',
-      to: 'yourpersonalemail@example.com',
-      subject: 'Test Email from Resend API',
-      text: 'This is a test email to confirm Resend is working.',
-});
+      from: "StrataXM Website <josh@strataxm.com>",
+      to: "josh@strataxm.com",
+      subject: `New Consultation Request from ${name}`,
+      html: `
+        <p><strong>Name:</strong> ${name}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Role:</strong> ${role || "Not specified"}</p>
+        <p><strong>Business:</strong> ${business || "Not specified"}</p>
+        <p><strong>Interests:</strong> ${interestsFormatted}</p>
+        <p><strong>Message:</strong><br>${message || "No message provided"}</p>
+      `,
+    });
 
-    // Log success - using optional chaining to safely access id property
+    // Log success
     console.log("Email sent successfully:", emailResult?.data?.id);
     res.status(200).json({ success: true, id: emailResult?.data?.id });
   } catch (err) {
-    // Enhanced error logging
     console.error("Email send failed:", err);
     
-    // Check if it's a Resend API error
     const errorMessage = err instanceof Error ? err.message : "Unknown error";
     const errorStack = err instanceof Error ? err.stack : "";
     
