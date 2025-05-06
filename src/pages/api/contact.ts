@@ -49,9 +49,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       `,
     });
 
-    // Log success
-    console.log("Email sent successfully:", emailResult.id);
-    res.status(200).json({ success: true, id: emailResult.id });
+    // Log success - using optional chaining to safely access id property
+    console.log("Email sent successfully:", emailResult?.data?.id);
+    res.status(200).json({ success: true, id: emailResult?.data?.id });
   } catch (err) {
     // Enhanced error logging
     console.error("Email send failed:", err);
