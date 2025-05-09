@@ -1,11 +1,144 @@
 
-import { Card, CardContent } from "@/components/ui/card";
-import { Users, LineChart, Database, Workflow, MessageSquare, BarChart3, Briefcase } from "lucide-react";
-import Link from "next/link";
+import { useState } from "react";
+import { ServiceCard } from "@/components/ServiceCard";
 import { Button } from "@/components/ui/button";
-import Image from "next/image";
+import Link from "next/link";
+import { 
+  LineChart, 
+  Users, 
+  Briefcase, 
+  BarChart3, 
+  MessageSquare, 
+  Workflow, 
+  Layers, 
+  Code, 
+  Shield, 
+  GraduationCap, 
+  Sparkles 
+} from "lucide-react";
+import { motion } from "framer-motion";
+
+// Service data
+const services = [
+  {
+    id: 1,
+    title: "End-to-End Experience Program Design",
+    icon: Layers,
+    whatItIs: "A comprehensive approach to designing customer and employee experience programs that align with business goals and deliver measurable outcomes.",
+    valueToBusinessPoints: [
+      "Customer journey mapping helps identify drop-off points — fixing them increases conversion rates.",
+      "Employee journey mapping helps reduce turnover, which saves on rehiring and training costs.",
+      "Strategic survey design yields actionable feedback, not noise — enabling targeted fixes that retain more customers.",
+      "Aligning with business outcomes ensures you're not "collecting feedback for fun" — you're solving problems tied to revenue (e.g., poor service, lost sales)."
+    ],
+    moneyInPocket: "Higher customer retention, better online reviews (leading to more customers), and fewer costly employee exits."
+  },
+  {
+    id: 2,
+    title: "Qualtrics Implementation & Configuration",
+    icon: Briefcase,
+    whatItIs: "Expert setup and configuration of Qualtrics XM platform tailored to your specific business needs and integrated with your existing systems.",
+    valueToBusinessPoints: [
+      "Dashboards + flows = faster insights — decisions made faster save opportunities from slipping.",
+      "Automated workflows mean fewer manual tasks — freeing up staff to serve more customers.",
+      "APIs to external systems avoid redundant data entry — fewer mistakes, more streamlined ops.",
+      "Clean data migration brings order to chaos — good data = good decisions."
+    ],
+    moneyInPocket: "Better insights → smarter marketing, quicker pivots → increased revenue and reduced waste."
+  },
+  {
+    id: 3,
+    title: "Real-Time Dashboard & Insight Development",
+    icon: BarChart3,
+    whatItIs: "Custom-built dashboards and analytics that transform raw data into actionable insights for executives and frontline teams.",
+    valueToBusinessPoints: [
+      "Exec-level dashboards enable faster and more confident decisions.",
+      "Trend spotting prevents small issues (like slow service or negative reviews) from becoming major losses.",
+      "AI tagging finds what's hidden in open-text — unlocking why customers leave.",
+      "Role-based analytics empower frontline teams to act now — not wait for corporate."
+    ],
+    moneyInPocket: "Catching problems early avoids revenue loss, and quick action improves sales and service consistency."
+  },
+  {
+    id: 4,
+    title: "Closed-Loop Feedback & Action Automation",
+    icon: Workflow,
+    whatItIs: "Automated systems that detect customer issues and trigger immediate responses, ensuring no negative experience goes unaddressed.",
+    valueToBusinessPoints: [
+      "Auto-triggered alerts let them jump on bad experiences before they hit Yelp.",
+      "Integrated workflows reduce manual effort — less staffing overhead.",
+      "Automated case handling improves customer recovery rates — winning back lost customers.",
+      "Track recovery outcomes = proof of effectiveness and ROI on service interventions."
+    ],
+    moneyInPocket: "Every "saved" customer = future revenue. Automated resolution = lower customer service costs."
+  },
+  {
+    id: 5,
+    title: "Technical Integration & API Engineering",
+    icon: Code,
+    whatItIs: "Seamless connections between your experience management platform and other business systems, creating a unified data ecosystem.",
+    valueToBusinessPoints: [
+      "Data syncs with CRMs/POS close the loop between experience and sales — so issues get fixed faster.",
+      "Custom connectors eliminate double work — staff stop copying data from one tool to another.",
+      "Real-time pipelines = real-time action — delay costs money.",
+      "Webhooks/event triggers create proactive operations (e.g., instant follow-up when feedback is negative)."
+    ],
+    moneyInPocket: "Less time wasted, fewer errors, faster response = more sales and happier customers."
+  },
+  {
+    id: 6,
+    title: "Governance & Program Scalability",
+    icon: Shield,
+    whatItIs: "Frameworks and processes that ensure your experience program remains consistent, secure, and scalable as your organization grows.",
+    valueToBusinessPoints: [
+      "Reusable templates save hours per project or campaign.",
+      "Defined roles and access prevent security mishaps or miscommunication.",
+      "Brand and tone standards improve professionalism — key for reputation and customer trust.",
+      "Health monitoring ensures surveys stay live, relevant, and effective — no wasted effort."
+    ],
+    moneyInPocket: "Reduces overhead, protects brand equity, and ensures long-term consistency with minimal rework."
+  },
+  {
+    id: 7,
+    title: "XM Training & Enablement",
+    icon: GraduationCap,
+    whatItIs: "Comprehensive training programs that empower your team to independently manage and optimize your experience management platform.",
+    valueToBusinessPoints: [
+      "Training frontline teams = faster adoption and more consistent customer experiences.",
+      "Upskilled admins mean less reliance on external help — more in-house control, lower costs.",
+      "Templated content and playbooks reduce learning curve for new hires.",
+      "Center of Excellence empowers them to scale XM without hiring more staff."
+    ],
+    moneyInPocket: "Lowers future support costs, speeds up resolution time, and increases team performance."
+  },
+  {
+    id: 8,
+    title: "Ongoing Managed Services & Innovation",
+    icon: Sparkles,
+    whatItIs: "Continuous support and innovation services that keep your experience program at the cutting edge and consistently delivering value.",
+    valueToBusinessPoints: [
+      "Fractional XM team means no need to hire a full-time analyst or developer.",
+      "Regular performance reviews catch slipping metrics before they impact revenue.",
+      "Pilot programs (like AI or voice) unlock first-mover advantage.",
+      "Innovation reviews help them stay ahead of competitors and identify new profit levers."
+    ],
+    moneyInPocket: "Higher lifetime value of customers, reduced churn, smarter innovations = faster growth."
+  }
+];
 
 export function ServicesSection() {
+  const [visibleServices, setVisibleServices] = useState(services.slice(0, 6));
+  const [showAll, setShowAll] = useState(false);
+  
+  const toggleShowAll = () => {
+    if (showAll) {
+      setVisibleServices(services.slice(0, 6));
+    } else {
+      setVisibleServices(services);
+    }
+    setShowAll(!showAll);
+  };
+  
   return (
     <section id="services" className="py-20 relative gradient-section-2">
       <div className="container relative z-10">
@@ -18,242 +151,51 @@ export function ServicesSection() {
           </p>
         </div>
         
-        {/* Customer Experience Management */}
-        <div className="mb-20">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div>
-              <div className="inline-flex items-center gap-2 bg-primary/10 px-4 py-2 rounded-full mb-4">
-                <MessageSquare className="w-4 h-4 text-primary" />
-                <span className="text-sm font-medium">Customer Experience Management</span>
-              </div>
-              <h3 className="text-2xl font-medium mb-4 tech-font">Transform Customer Journeys Into Business Growth</h3>
-              <p className="text-muted-foreground mb-6">
-                We help organizations collect, interpret, and act on customer feedback to improve retention and satisfaction. Our strategic approach goes beyond simple surveys to create comprehensive experience programs that drive loyalty and revenue.
-              </p>
-              
-              <div className="grid grid-cols-2 gap-4 mb-6">
-                <div className="bg-white/5 backdrop-blur-sm rounded-lg p-4 border border-border/20">
-                  <h4 className="font-medium mb-2">Voice of Customer Programs</h4>
-                  <p className="text-sm text-muted-foreground">Strategic feedback collection across all touchpoints</p>
-                </div>
-                <div className="bg-white/5 backdrop-blur-sm rounded-lg p-4 border border-border/20">
-                  <h4 className="font-medium mb-2">Journey Mapping</h4>
-                  <p className="text-sm text-muted-foreground">Identify critical moments that impact satisfaction</p>
-                </div>
-                <div className="bg-white/5 backdrop-blur-sm rounded-lg p-4 border border-border/20">
-                  <h4 className="font-medium mb-2">Closed-Loop Systems</h4>
-                  <p className="text-sm text-muted-foreground">Automated response workflows for customer recovery</p>
-                </div>
-                <div className="bg-white/5 backdrop-blur-sm rounded-lg p-4 border border-border/20">
-                  <h4 className="font-medium mb-2">CX Metrics & ROI</h4>
-                  <p className="text-sm text-muted-foreground">Connect experience data to business outcomes</p>
-                </div>
-              </div>
-            </div>
-            
-            <div className="relative rounded-xl overflow-hidden border border-border/50 shadow-lg">
-              <div className="bg-white/10 backdrop-blur-sm p-6 rounded-xl">
-                <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
-                  <span className="text-2xl font-bold text-primary">32%</span>
-                </div>
-                <h4 className="text-center font-medium mb-2">Higher Customer Retention</h4>
-                <p className="text-center text-sm text-muted-foreground mb-6">
-                  Organizations with strategic CX programs see significantly higher customer loyalty and lifetime value.
-                </p>
-                
-                <div className="space-y-4">
-                  <div className="bg-white/5 p-4 rounded-lg">
-                    <div className="flex items-center justify-between mb-2">
-                      <span className="text-sm font-medium">Customer Satisfaction</span>
-                      <span className="text-sm font-medium text-primary">+47%</span>
-                    </div>
-                    <div className="w-full bg-gray-200 rounded-full h-2">
-                      <div className="bg-primary h-2 rounded-full" style={{ width: "47%" }}></div>
-                    </div>
-                  </div>
-                  
-                  <div className="bg-white/5 p-4 rounded-lg">
-                    <div className="flex items-center justify-between mb-2">
-                      <span className="text-sm font-medium">Revenue Growth</span>
-                      <span className="text-sm font-medium text-primary">+28%</span>
-                    </div>
-                    <div className="w-full bg-gray-200 rounded-full h-2">
-                      <div className="bg-primary h-2 rounded-full" style={{ width: "28%" }}></div>
-                    </div>
-                  </div>
-                  
-                  <div className="bg-white/5 p-4 rounded-lg">
-                    <div className="flex items-center justify-between mb-2">
-                      <span className="text-sm font-medium">Customer Lifetime Value</span>
-                      <span className="text-sm font-medium text-primary">+53%</span>
-                    </div>
-                    <div className="w-full bg-gray-200 rounded-full h-2">
-                      <div className="bg-primary h-2 rounded-full" style={{ width: "53%" }}></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {visibleServices.map((service, index) => (
+            <motion.div
+              key={service.id}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, delay: index * 0.1 }}
+            >
+              <ServiceCard
+                title={service.title}
+                icon={service.icon}
+                whatItIs={service.whatItIs}
+                valueToBusinessPoints={service.valueToBusinessPoints}
+                moneyInPocket={service.moneyInPocket}
+              />
+            </motion.div>
+          ))}
         </div>
         
-        {/* Employee Experience Management */}
-        <div className="mb-20">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="order-2 md:order-1 relative rounded-xl overflow-hidden border border-border/50 shadow-lg">
-              <div className="bg-white/10 backdrop-blur-sm p-6 rounded-xl">
-                <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
-                  <span className="text-2xl font-bold text-primary">41%</span>
-                </div>
-                <h4 className="text-center font-medium mb-2">Reduced Employee Turnover</h4>
-                <p className="text-center text-sm text-muted-foreground mb-6">
-                  Strategic employee experience programs significantly improve retention and productivity.
-                </p>
-                
-                <div className="space-y-4">
-                  <div className="bg-white/5 p-4 rounded-lg">
-                    <div className="flex items-center justify-between mb-2">
-                      <span className="text-sm font-medium">Employee Engagement</span>
-                      <span className="text-sm font-medium text-primary">+38%</span>
-                    </div>
-                    <div className="w-full bg-gray-200 rounded-full h-2">
-                      <div className="bg-primary h-2 rounded-full" style={{ width: "38%" }}></div>
-                    </div>
-                  </div>
-                  
-                  <div className="bg-white/5 p-4 rounded-lg">
-                    <div className="flex items-center justify-between mb-2">
-                      <span className="text-sm font-medium">Productivity</span>
-                      <span className="text-sm font-medium text-primary">+24%</span>
-                    </div>
-                    <div className="w-full bg-gray-200 rounded-full h-2">
-                      <div className="bg-primary h-2 rounded-full" style={{ width: "24%" }}></div>
-                    </div>
-                  </div>
-                  
-                  <div className="bg-white/5 p-4 rounded-lg">
-                    <div className="flex items-center justify-between mb-2">
-                      <span className="text-sm font-medium">Talent Acquisition</span>
-                      <span className="text-sm font-medium text-primary">+35%</span>
-                    </div>
-                    <div className="w-full bg-gray-200 rounded-full h-2">
-                      <div className="bg-primary h-2 rounded-full" style={{ width: "35%" }}></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div className="order-1 md:order-2">
-              <div className="inline-flex items-center gap-2 bg-primary/10 px-4 py-2 rounded-full mb-4">
-                <Users className="w-4 h-4 text-primary" />
-                <span className="text-sm font-medium">Employee Experience Management</span>
-              </div>
-              <h3 className="text-2xl font-medium mb-4 tech-font">Design Personalized Employee Journeys</h3>
-              <p className="text-muted-foreground mb-6">
-                We help organizations create measurable employee experiences that improve morale, productivity, and retention. Our approach connects employee feedback to business outcomes through strategic program design and implementation.
-              </p>
-              
-              <div className="grid grid-cols-2 gap-4 mb-6">
-                <div className="bg-white/5 backdrop-blur-sm rounded-lg p-4 border border-border/20">
-                  <h4 className="font-medium mb-2">Engagement Programs</h4>
-                  <p className="text-sm text-muted-foreground">Strategic measurement and action planning</p>
-                </div>
-                <div className="bg-white/5 backdrop-blur-sm rounded-lg p-4 border border-border/20">
-                  <h4 className="font-medium mb-2">Lifecycle Mapping</h4>
-                  <p className="text-sm text-muted-foreground">From recruitment to exit and beyond</p>
-                </div>
-                <div className="bg-white/5 backdrop-blur-sm rounded-lg p-4 border border-border/20">
-                  <h4 className="font-medium mb-2">Manager Enablement</h4>
-                  <p className="text-sm text-muted-foreground">Tools and insights for better leadership</p>
-                </div>
-                <div className="bg-white/5 backdrop-blur-sm rounded-lg p-4 border border-border/20">
-                  <h4 className="font-medium mb-2">EX-CX Connection</h4>
-                  <p className="text-sm text-muted-foreground">Link employee and customer experiences</p>
-                </div>
-              </div>
-            </div>
+        {services.length > 6 && (
+          <div className="text-center mt-10">
+            <Button 
+              onClick={toggleShowAll} 
+              variant="outline" 
+              size="lg"
+              className="group"
+            >
+              <span>{showAll ? "Show Less" : "Show All Services"}</span>
+              <svg 
+                xmlns="http://www.w3.org/2000/svg" 
+                width="20" 
+                height="20" 
+                viewBox="0 0 24 24" 
+                fill="none" 
+                stroke="currentColor" 
+                strokeWidth="2" 
+                strokeLinecap="round" 
+                strokeLinejoin="round" 
+                className={`ml-2 transition-transform duration-300 ${showAll ? "rotate-180" : ""}`}
+              >
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </Button>
           </div>
-        </div>
-        
-        {/* Qualtrics Implementation */}
-        <div className="mb-16">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div>
-              <div className="inline-flex items-center gap-2 bg-primary/10 px-4 py-2 rounded-full mb-4">
-                <Briefcase className="w-4 h-4 text-primary" />
-                <span className="text-sm font-medium">Qualtrics Implementation</span>
-              </div>
-              <h3 className="text-2xl font-medium mb-4 tech-font">Maximize Your Qualtrics Investment</h3>
-              <p className="text-muted-foreground mb-6">
-                We help organizations integrate and customize Qualtrics to match their specific business needs. Our technical expertise ensures you get the most from your XM platform through advanced setup, dashboarding, and workflow automation.
-              </p>
-              
-              <div className="grid grid-cols-2 gap-4 mb-6">
-                <div className="bg-white/5 backdrop-blur-sm rounded-lg p-4 border border-border/20">
-                  <h4 className="font-medium mb-2">Platform Configuration</h4>
-                  <p className="text-sm text-muted-foreground">Custom setup aligned to your business goals</p>
-                </div>
-                <div className="bg-white/5 backdrop-blur-sm rounded-lg p-4 border border-border/20">
-                  <h4 className="font-medium mb-2">Integration Services</h4>
-                  <p className="text-sm text-muted-foreground">Connect Qualtrics with your existing systems</p>
-                </div>
-                <div className="bg-white/5 backdrop-blur-sm rounded-lg p-4 border border-border/20">
-                  <h4 className="font-medium mb-2">Dashboard Design</h4>
-                  <p className="text-sm text-muted-foreground">Actionable visualizations for all stakeholders</p>
-                </div>
-                <div className="bg-white/5 backdrop-blur-sm rounded-lg p-4 border border-border/20">
-                  <h4 className="font-medium mb-2">Workflow Automation</h4>
-                  <p className="text-sm text-muted-foreground">Streamline actions and follow-up processes</p>
-                </div>
-              </div>
-            </div>
-            
-            <div className="relative rounded-xl overflow-hidden border border-border/50 shadow-lg">
-              <div className="bg-white/10 backdrop-blur-sm p-6 rounded-xl">
-                <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
-                  <span className="text-2xl font-bold text-primary">3.5x</span>
-                </div>
-                <h4 className="text-center font-medium mb-2">ROI on Qualtrics Investment</h4>
-                <p className="text-center text-sm text-muted-foreground mb-6">
-                  Strategic implementation maximizes the value of your XM platform investment.
-                </p>
-                
-                <div className="space-y-4">
-                  <div className="bg-white/5 p-4 rounded-lg">
-                    <div className="flex items-center justify-between mb-2">
-                      <span className="text-sm font-medium">Implementation Speed</span>
-                      <span className="text-sm font-medium text-primary">+65%</span>
-                    </div>
-                    <div className="w-full bg-gray-200 rounded-full h-2">
-                      <div className="bg-primary h-2 rounded-full" style={{ width: "65%" }}></div>
-                    </div>
-                  </div>
-                  
-                  <div className="bg-white/5 p-4 rounded-lg">
-                    <div className="flex items-center justify-between mb-2">
-                      <span className="text-sm font-medium">User Adoption</span>
-                      <span className="text-sm font-medium text-primary">+82%</span>
-                    </div>
-                    <div className="w-full bg-gray-200 rounded-full h-2">
-                      <div className="bg-primary h-2 rounded-full" style={{ width: "82%" }}></div>
-                    </div>
-                  </div>
-                  
-                  <div className="bg-white/5 p-4 rounded-lg">
-                    <div className="flex items-center justify-between mb-2">
-                      <span className="text-sm font-medium">Data Utilization</span>
-                      <span className="text-sm font-medium text-primary">+74%</span>
-                    </div>
-                    <div className="w-full bg-gray-200 rounded-full h-2">
-                      <div className="bg-primary h-2 rounded-full" style={{ width: "74%" }}></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        )}
         
         <div className="text-center mt-12">
           <Button asChild size="lg">
