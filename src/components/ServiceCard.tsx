@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { motion } from "framer-motion";
@@ -36,7 +35,7 @@ export function ServiceCard({
         {[
           { id: "what", label: "What it is" },
           { id: "value", label: "Value to Business" },
-          { id: "money", label: "Money in Pocket" }
+          { id: "money", label: "ROI" }
         ].map((tab) => (
           <button
             key={tab.id}
