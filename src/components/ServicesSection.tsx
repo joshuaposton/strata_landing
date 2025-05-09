@@ -26,7 +26,7 @@ const services = [
       "Customer journey mapping helps identify drop-off points — fixing them increases conversion rates.",
       "Employee journey mapping helps reduce turnover, which saves on rehiring and training costs.",
       "Strategic survey design yields actionable feedback, not noise — enabling targeted fixes that retain more customers.",
-      "Aligning with business outcomes ensures you're not \\"collecting feedback for fun\\" — you're solving problems tied to revenue (e.g., poor service, lost sales)."
+      "Aligning with business outcomes ensures you're not 'collecting feedback for fun' — you're solving problems tied to revenue (e.g., poor service, lost sales)."
     ],
     moneyInPocket: "Higher customer retention, better online reviews (leading to more customers), and fewer costly employee exits."
   },
@@ -67,7 +67,7 @@ const services = [
       "Automated case handling improves customer recovery rates — winning back lost customers.",
       "Track recovery outcomes = proof of effectiveness and ROI on service interventions."
     ],
-    moneyInPocket: "Every \\"saved\\" customer = future revenue. Automated resolution = lower customer service costs."
+    moneyInPocket: "Every 'saved' customer = future revenue. Automated resolution = lower customer service costs."
   },
   {
     id: 5,
@@ -162,8 +162,6 @@ export function ServicesSection() {
                 whatItIs={service.whatItIs}
                 valueToBusinessPoints={service.valueToBusinessPoints}
                 moneyInPocket={service.moneyInPocket}
-                // Example of using a different accent color for specific cards if needed
-                // accentColor={index % 2 === 0 ? "primary" : "secondary"} 
               />
             </motion.div>
           ))}
