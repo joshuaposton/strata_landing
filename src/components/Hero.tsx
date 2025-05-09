@@ -14,7 +14,7 @@ export function Hero() {
         <div className="max-w-3xl mx-auto">
           <div className="inline-flex items-center gap-2 bg-primary/10 px-4 py-2 rounded-full mb-6">
             <Users className="w-4 h-4 text-primary" />
-            <span className="text-sm font-medium">Full-Service Experience Management Consulting</span>
+            <span className="text-sm font-medium">Full-Service Experience Management Services</span>
           </div>
           
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 tracking-tight tech-heading">
