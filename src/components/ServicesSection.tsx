@@ -4,13 +4,10 @@ import { ServiceCard } from "@/components/ServiceCard";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { 
-  LineChart, 
-  Users, 
+  Layers, 
   Briefcase, 
   BarChart3, 
-  MessageSquare, 
   Workflow, 
-  Layers, 
   Code, 
   Shield, 
   GraduationCap, 
@@ -29,7 +26,7 @@ const services = [
       "Customer journey mapping helps identify drop-off points — fixing them increases conversion rates.",
       "Employee journey mapping helps reduce turnover, which saves on rehiring and training costs.",
       "Strategic survey design yields actionable feedback, not noise — enabling targeted fixes that retain more customers.",
-      "Aligning with business outcomes ensures you're not "collecting feedback for fun" — you're solving problems tied to revenue (e.g., poor service, lost sales)."
+      "Aligning with business outcomes ensures you're not \\"collecting feedback for fun\\" — you're solving problems tied to revenue (e.g., poor service, lost sales)."
     ],
     moneyInPocket: "Higher customer retention, better online reviews (leading to more customers), and fewer costly employee exits."
   },
@@ -70,7 +67,7 @@ const services = [
       "Automated case handling improves customer recovery rates — winning back lost customers.",
       "Track recovery outcomes = proof of effectiveness and ROI on service interventions."
     ],
-    moneyInPocket: "Every "saved" customer = future revenue. Automated resolution = lower customer service costs."
+    moneyInPocket: "Every \\"saved\\" customer = future revenue. Automated resolution = lower customer service costs."
   },
   {
     id: 5,
@@ -141,12 +138,12 @@ export function ServicesSection() {
   
   return (
     <section id="services" className="py-20 relative gradient-section-2">
-      <div className="container relative z-10">
+      <div className="container relative z-10 mx-auto px-4 md:px-6 lg:px-8 max-w-[2000px]">
         <div className="max-w-3xl mx-auto mb-16">
-          <h2 className="section-title text-center">
+          <h2 className="text-4xl font-bold tracking-tight text-center sm:text-5xl md:text-6xl">
             <span className="gradient-text">Our Core Services</span>
           </h2>
-          <p className="text-lg text-muted-foreground text-center mt-4">
+          <p className="text-lg text-muted-foreground text-center mt-6">
             StrataXM is a full-service experience management consulting firm that designs, implements, and optimizes programs that deliver measurable business outcomes.
           </p>
         </div>
@@ -165,6 +162,8 @@ export function ServicesSection() {
                 whatItIs={service.whatItIs}
                 valueToBusinessPoints={service.valueToBusinessPoints}
                 moneyInPocket={service.moneyInPocket}
+                // Example of using a different accent color for specific cards if needed
+                // accentColor={index % 2 === 0 ? "primary" : "secondary"} 
               />
             </motion.div>
           ))}
