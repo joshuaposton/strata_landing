@@ -1,0 +1,5 @@
+
+User-agent: *
+Allow: /
+
+Sitemap: https://3000-2fc54590-af21-4cc3-96b6-54beed91e7ba.h1050.daytona.work/sitemap.xml

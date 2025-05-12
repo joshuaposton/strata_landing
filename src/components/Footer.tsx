@@ -32,6 +32,11 @@ export function Footer() {
                   Contact
                 </Link>
               </li>
+              <li>
+                <Link href='/sitemap' className='text-muted-foreground hover:text-foreground transition-colors'>
+                  Sitemap
+                </Link>
+              </li>
             </ul>
           </div>
           
